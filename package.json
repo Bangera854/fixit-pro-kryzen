@@ -1,0 +1,115 @@
+{
+  "name": "inline-diagnostics-kryzen",
+  "displayName": "Fixit Pro",
+  "description": "Shows errors, warnings, and hints inline at the end of each line — plus AI-powered batch fixing.",
+  "version": "1.3.0",
+  "publisher": "KRYZEN",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Linters",
+    "Other"
+  ],
+  "keywords": [
+    "error lens",
+    "inline errors",
+    "diagnostics",
+    "typescript",
+    "javascript",
+    "python",
+    "fix",
+    "ai fix",
+    "batch fix"
+  ],
+  "icon": "images/icon.png",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "license": "MIT",
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "inlineDiagnostics.toggle",
+        "title": "Inline Diagnostics: Toggle On/Off"
+      },
+      {
+        "command": "inlineDiagnostics.aiFix",
+        "title": "✨ Fixit Pro: AI Quick Fix (Single Error)"
+      },
+      {
+        "command": "inlineDiagnostics.aiFixAll",
+        "title": "🚀 Fixit Pro: Fix All Errors in File (Pro)"
+      }
+    ],
+    "configuration": {
+      "title": "Inline Diagnostics",
+      "properties": {
+        "inlineDiagnostics.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable or disable inline diagnostics."
+        },
+        "inlineDiagnostics.maxMessageLength": {
+          "type": "number",
+          "default": 80,
+          "description": "Maximum number of characters shown per diagnostic message."
+        },
+        "inlineDiagnostics.fontSize": {
+          "type": "string",
+          "default": "0.85em",
+          "description": "Font size of inline diagnostic messages (e.g. '0.85em', '12px')."
+        },
+        "inlineDiagnostics.errorColor": {
+          "type": "string",
+          "default": "#ff6b6b",
+          "description": "Color for error messages."
+        },
+        "inlineDiagnostics.warningColor": {
+          "type": "string",
+          "default": "#ffa94d",
+          "description": "Color for warning messages."
+        },
+        "inlineDiagnostics.infoColor": {
+          "type": "string",
+          "default": "#74c0fc",
+          "description": "Color for info messages."
+        },
+        "inlineDiagnostics.hintColor": {
+          "type": "string",
+          "default": "#a9e34b",
+          "description": "Color for hint messages."
+        },
+        "inlineDiagnostics.enabledSeverities": {
+          "type": "array",
+          "default": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "description": "Severities to show: 0=Error, 1=Warning, 2=Info, 3=Hint."
+        },
+        "inlineDiagnostics.licenseKey": {
+          "type": "string",
+          "default": "",
+          "description": "Fixit Pro License Key (e.g., user123:abc123...). Get it from the official store."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "vscode:prepublish": "npm run compile",
+    "package": "vsce package",
+    "publish": "vsce publish"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.125.0",
+    "@vscode/vsce": "^2.22.0",
+    "typescript": "^5.3.0"
+  }
+}
